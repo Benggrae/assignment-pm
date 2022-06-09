@@ -1,13 +1,12 @@
-package com.example.assignmentpm.marketing.infrastructure;
+package com.example.assignmentpm.collection.infrastructure;
 
 import com.amazonaws.services.dynamodbv2.local.main.ServerRunner;
 import com.amazonaws.services.dynamodbv2.local.server.DynamoDBProxyServer;
-import com.example.assignmentpm.marketing.infrastructure.util.AwsDynamoDbLocalTestUtils;
+import com.example.assignmentpm.collection.infrastructure.util.AwsDynamoDbLocalTestUtils;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 

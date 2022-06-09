@@ -1,4 +1,4 @@
-package com.example.assignmentpm.marketing.domain;
+package com.example.assignmentpm.collection.domain;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;

@@ -1,4 +1,4 @@
-package com.example.assignmentpm.marketing.infrastructure;
+package com.example.assignmentpm.collection.infrastructure;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
@@ -8,6 +8,12 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig;
+import com.amazonaws.services.dynamodbv2.model.CreateTableRequest;
+import com.amazonaws.services.dynamodbv2.model.ProvisionedThroughput;
+import com.amazonaws.services.dynamodbv2.util.TableUtils;
+import com.example.assignmentpm.collection.domain.Member;
+import javax.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 import org.socialsignin.spring.data.dynamodb.repository.config.EnableDynamoDBRepositories;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,8 +21,9 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 
 @Configuration
-@EnableDynamoDBRepositories(basePackages = {"com.example.assignmentpm.marketing.infrastructure.dynamoRepository"})
+@EnableDynamoDBRepositories(basePackages = {"com.example.assignmentpm.collection.infrastructure.dynamoRepository"})
 public class AwsDynamoDbConfig {
+
 
     @Bean
     @Primary
@@ -40,4 +47,8 @@ public class AwsDynamoDbConfig {
     public DynamoDBMapper dynamoDBMapper(AmazonDynamoDB amazonDynamoDB, DynamoDBMapperConfig config) {
         return new DynamoDBMapper(amazonDynamoDB, config);
     }
+
+
+
+
 }

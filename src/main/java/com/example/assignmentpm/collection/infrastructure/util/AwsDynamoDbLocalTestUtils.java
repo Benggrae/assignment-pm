@@ -1,4 +1,4 @@
-package com.example.assignmentpm.marketing.infrastructure.util;
+package com.example.assignmentpm.collection.infrastructure.util;
 
 import lombok.NoArgsConstructor;
 
