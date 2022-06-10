@@ -1,6 +1,7 @@
-package com.example.assignmentpm.collection.infrastructure.util;
+package com.example.assignmentpm.config;
 
-import lombok.NoArgsConstructor;
+
+import static lombok.AccessLevel.PRIVATE;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -8,8 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.function.Supplier;
-
-import static lombok.AccessLevel.PRIVATE;
+import lombok.NoArgsConstructor;
 /**
  * Helper class for initializing AWS DynamoDB to run with sqlite4java for local testing.
  *
