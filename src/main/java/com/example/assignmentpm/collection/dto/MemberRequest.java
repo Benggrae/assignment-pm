@@ -1,17 +1,40 @@
 package com.example.assignmentpm.collection.dto;
 
 import com.example.assignmentpm.collection.domain.Member;
+import java.util.Optional;
+import javax.validation.constraints.NotEmpty;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class MemberRequest {
 
-    private String id;
+    @NotEmpty
+    private String email;
+    @NotEmpty
     private String name;
+    @NotEmpty
+    private String hp;
+    @NotEmpty
+    private String agreeYn;
 
-    public Member toMember() {
-        return Member.builder().name(this.name)
-                .id(this.id)
-                .build();
+    @Builder
+    public MemberRequest(String email, String name, String hp, String agreeYn) {
+        this.email = email;
+        this.name = name;
+        this.hp = hp;
+        this.agreeYn = agreeYn;
+    }
+
+    public Optional<Member> toMember() {
+        if ("N".equals(agreeYn)) {
+            return Optional.empty();
+        }
+        return Optional.of(Member.builder()
+                .email(email)
+                .hp(hp)
+                .name(name).build());
     }
 }
