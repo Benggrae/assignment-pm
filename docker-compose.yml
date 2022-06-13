@@ -15,6 +15,25 @@ services:
       - localstack_data:/tmp/localstack/data
     networks:
       - localstack
+      - default
+
+  web:
+    ports:
+      - "8090:8080"
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    links:
+      - "localstack:localstack"
+    environment:
+      - SPRING_PROFILES_ACTIVE=container
+    depends_on:
+      - localstack
+    networks:
+      - default
+
+
 volumes:
   localstack_data:
 networks:

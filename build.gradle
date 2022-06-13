@@ -34,7 +34,6 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'com.amazonaws:DynamoDBLocal:1.12.0'
     testCompileOnly 'org.projectlombok:lombok'
-    testImplementation 'com.amazonaws:DynamoDBLocal:1.12.0'
     testAnnotationProcessor 'org.projectlombok:lombok'
 
 }

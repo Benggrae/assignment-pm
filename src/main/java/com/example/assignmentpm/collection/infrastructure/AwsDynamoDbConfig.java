@@ -19,6 +19,10 @@ import org.springframework.context.annotation.Profile;
 @EnableDynamoDBRepositories(basePackages = {"com.example.assignmentpm.collection.infrastructure.dynamoRepository"})
 public class AwsDynamoDbConfig {
 
+    private final static String TEST_END_POINT = "http://localhost:8000";
+    private final static String LOCAL_END_POINT = "http://localhost:4566";
+    private final static String CONTAINER_END_POINT = "http://localstack:4566";
+
 
     @Bean
     @Primary
@@ -47,8 +51,8 @@ public class AwsDynamoDbConfig {
     @Bean(name = "amazonDynamoDB")
     public AmazonDynamoDB embeddedAmazonDynamoDB() {
         return AmazonDynamoDBClientBuilder.standard()
-                .withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials("local", "local")))
-                .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration("http://127.0.0.1:8000",
+                .withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials("test", "test")))
+                .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(TEST_END_POINT,
                         Regions.AP_NORTHEAST_2.getName()))
                 .build();
     }
@@ -62,9 +66,24 @@ public class AwsDynamoDbConfig {
                 .withCredentials(
                         new AWSStaticCredentialsProvider(new BasicAWSCredentials("awsAccessKey", "awsSecretKey")))
                 .withEndpointConfiguration(
-                        new AwsClientBuilder.EndpointConfiguration("http://localhost:4566", "awsRegion"))
+                        new AwsClientBuilder.EndpointConfiguration(LOCAL_END_POINT, "awsRegion"))
                 .build();
 
     }
+
+    @Primary
+    @Profile("container")
+    @Bean(name = "amazonDynamoDB")
+    public AmazonDynamoDB containerAmazonDynamoDB() {
+        return AmazonDynamoDBClientBuilder
+                .standard()
+                .withCredentials(
+                        new AWSStaticCredentialsProvider(new BasicAWSCredentials("awsAccessKey", "awsSecretKey")))
+                .withEndpointConfiguration(
+                        new AwsClientBuilder.EndpointConfiguration(CONTAINER_END_POINT, "awsRegion"))
+                .build();
+
+    }
+
 
 }

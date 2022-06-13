@@ -3,18 +3,16 @@ package com.example.assignmentpm.config;
 
 import com.amazonaws.services.dynamodbv2.local.main.ServerRunner;
 import com.amazonaws.services.dynamodbv2.local.server.DynamoDBProxyServer;
-
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.Configuration;
 
-@TestConfiguration
+@Configuration
 @RequiredArgsConstructor
 @Slf4j
-@ConditionalOnProperty(name = "embedded-dynamodb.use", havingValue = "true")
+//@ConditionalOnProperty(name = "embedded-dynamodb.use", havingValue = "true")
 public class EmbeddedDynamoDbConfig {
 
     private DynamoDBProxyServer proxyServer;
