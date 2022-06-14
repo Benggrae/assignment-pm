@@ -14,9 +14,6 @@ public class MemberService {
     private final MemberRepository memberRepository;
 
     public String saveMember(MemberRequest request) {
-
-
-
         return request.toMember()
                 .map(value -> memberRepository.save(value).getId()).orElse(null);
     }

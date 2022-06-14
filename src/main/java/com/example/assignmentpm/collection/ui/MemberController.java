@@ -33,7 +33,7 @@ public class MemberController {
     }
 
     @GetMapping("members/{memberId}")
-    public ResponseEntity<MemberResponse> memberInfo(@PathVariable String memberId) {
+    public ResponseEntity<MemberResponse> memberInfo(@PathVariable(name = "memberId") String memberId) {
         return ResponseEntity.ok(memberService.findMember(memberId));
     }
 }

@@ -10,6 +10,7 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig;
 import org.socialsignin.spring.data.dynamodb.repository.config.EnableDynamoDBRepositories;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -19,9 +20,8 @@ import org.springframework.context.annotation.Profile;
 @EnableDynamoDBRepositories(basePackages = {"com.example.assignmentpm.collection.infrastructure.dynamoRepository"})
 public class AwsDynamoDbConfig {
 
-    private final static String TEST_END_POINT = "http://localhost:8000";
-    private final static String LOCAL_END_POINT = "http://localhost:4566";
-    private final static String CONTAINER_END_POINT = "http://localstack:4566";
+    @Value("${dynamodb.endPoint}")
+    private String dynamoEndPoint;
 
 
     @Bean
@@ -47,43 +47,14 @@ public class AwsDynamoDbConfig {
     }
 
     @Primary
-    @Profile("test")
+    @Profile("!prod")
     @Bean(name = "amazonDynamoDB")
     public AmazonDynamoDB embeddedAmazonDynamoDB() {
         return AmazonDynamoDBClientBuilder.standard()
                 .withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials("test", "test")))
-                .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(TEST_END_POINT,
+                .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(dynamoEndPoint,
                         Regions.AP_NORTHEAST_2.getName()))
                 .build();
     }
-
-    @Primary
-    @Profile("local")
-    @Bean(name = "amazonDynamoDB")
-    public AmazonDynamoDB localAmazonDynamoDB() {
-        return AmazonDynamoDBClientBuilder
-                .standard()
-                .withCredentials(
-                        new AWSStaticCredentialsProvider(new BasicAWSCredentials("awsAccessKey", "awsSecretKey")))
-                .withEndpointConfiguration(
-                        new AwsClientBuilder.EndpointConfiguration(LOCAL_END_POINT, "awsRegion"))
-                .build();
-
-    }
-
-    @Primary
-    @Profile("container")
-    @Bean(name = "amazonDynamoDB")
-    public AmazonDynamoDB containerAmazonDynamoDB() {
-        return AmazonDynamoDBClientBuilder
-                .standard()
-                .withCredentials(
-                        new AWSStaticCredentialsProvider(new BasicAWSCredentials("awsAccessKey", "awsSecretKey")))
-                .withEndpointConfiguration(
-                        new AwsClientBuilder.EndpointConfiguration(CONTAINER_END_POINT, "awsRegion"))
-                .build();
-
-    }
-
 
 }
