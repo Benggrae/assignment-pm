@@ -7,6 +7,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIndexHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.regex.Pattern;
 import lombok.Builder;
@@ -19,7 +20,7 @@ import org.springframework.data.annotation.Id;
 @Setter
 @NoArgsConstructor
 @DynamoDBTable(tableName = "member")
-public class Member {
+public class Member implements Serializable {
     private static final Pattern EMAIL_PATTERN = Pattern.compile("^(.+)@(.+)$");
 
     @Id

@@ -1,9 +1,9 @@
 package com.example.assignmentpm.collection.application;
 
+import com.example.assignmentpm.collection.domain.Member;
 import com.example.assignmentpm.collection.dto.MemberRequest;
-import com.example.assignmentpm.collection.dto.MemberResponse;
 import com.example.assignmentpm.collection.infrastructure.dynamoRepository.MemberRepository;
-import java.util.NoSuchElementException;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,16 +11,21 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class MemberService {
 
+    private static final IllegalArgumentException IS_PROCESS_EXCEPTION = new IllegalArgumentException("이미 참여하였습니다.");
     private final MemberRepository memberRepository;
 
+    private final MemberSearchService memberSearchService;
+
+
     public String saveMember(MemberRequest request) {
-        return request.toMember()
-                .map(value -> memberRepository.save(value).getId()).orElse(null);
-    }
+        final Optional<Member> optionalMember = request.toMember();
+        if (optionalMember.isEmpty()) {
+            return null;
+        }
+        if (memberSearchService.hasEmailAndHp(optionalMember.get()).isPresent()) {
+            throw IS_PROCESS_EXCEPTION;
+        }
 
-    public MemberResponse findMember(String memberId) {
-        return MemberResponse.buildResponse(memberRepository.findById(memberId)
-                .orElseThrow(() -> new NoSuchElementException("데이터가 존재하지 않습니다.")));
+        return memberRepository.save(optionalMember.get()).getId();
     }
-
 }
