@@ -83,7 +83,7 @@ class MemberControllerTest {
 
 
     private MvcResult 멤버를_저장한다(MemberRequest memberRequest) throws Exception{
-        return mockMvc.perform(post("/collection/member")
+        return mockMvc.perform(post("/api/v1/collection/member")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(memberRequest)))
                 .andReturn();

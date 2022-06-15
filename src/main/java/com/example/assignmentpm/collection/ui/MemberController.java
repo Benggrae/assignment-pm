@@ -2,16 +2,13 @@ package com.example.assignmentpm.collection.ui;
 
 import com.example.assignmentpm.collection.application.MemberSearchService;
 import com.example.assignmentpm.collection.application.MemberService;
-import com.example.assignmentpm.collection.domain.Member;
 import com.example.assignmentpm.collection.dto.MemberRequest;
 import com.example.assignmentpm.collection.dto.MemberResponse;
 import com.example.assignmentpm.collection.infrastructure.dynamoRepository.MemberRepository;
 import java.net.URI;
-import java.util.List;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,7 +35,7 @@ public class MemberController {
         if (memberId == null) {
             return ResponseEntity.noContent().build();
         }
-        return ResponseEntity.created(URI.create("/collection/members/" + memberId)).build();
+        return ResponseEntity.created(URI.create("api/v1/collection/members/" + memberId)).build();
     }
 
     @GetMapping("members/{memberId}")

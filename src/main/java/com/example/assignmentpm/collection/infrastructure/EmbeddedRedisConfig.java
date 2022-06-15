@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import redis.embedded.RedisServer;
 
-@Profile("local")
+@Profile({"local","test"})
 @Configuration
 public class EmbeddedRedisConfig {
 
@@ -18,7 +18,7 @@ public class EmbeddedRedisConfig {
 
     @PostConstruct
     public void redisServer() {
-        redisServer = new RedisServer(redisPort);
+        redisServer = RedisServer.builder().port(redisPort).build();
         redisServer.start();
     }
 
