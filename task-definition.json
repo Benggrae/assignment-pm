@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "cpu": 128,
-      "image": "327927570188.dkr.ecr.ap-northeast-2.amazonaws.com/assignment-pm:f9ca108206bb06637643853b8864142ab9e894f3",
+      "image": "327927570188.dkr.ecr.ap-northeast-2.amazonaws.com/assignment-pm:latest",
       "memory": 300,
       "name": "assignment-pm",
       "essential" : true,
