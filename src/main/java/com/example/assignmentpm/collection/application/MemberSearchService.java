@@ -15,7 +15,7 @@ public class MemberSearchService {
 
     private final MemberRepository memberRepository;
 
-    @Cacheable(cacheNames = "member", key = "#member")
+    @Cacheable(cacheNames = "member", key = "#member.email")
     public Optional<Member> hasEmailAndHp(Member member) {
         return memberRepository.findByEmailAndHp(member.getEmail(), member.getHp());
     }

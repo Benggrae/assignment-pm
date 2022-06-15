@@ -4,6 +4,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 
 import com.example.assignmentpm.collection.dto.MemberRequest;
 import com.example.assignmentpm.collection.dto.MemberResponse;
@@ -72,6 +75,26 @@ class MemberControllerTest {
         assertAll(
                 () -> assertThat(result.getResponse().getStatus()).isEqualTo(HttpStatus.NO_CONTENT.value())
         );
+    }
+
+    @Test
+    @DisplayName("멤버들을 조회한다.")
+    void getMembers() throws Exception{
+        final MemberRequest memberRequest1 = MemberRequest.builder()
+                .hp("+8201055523456").name("이름").agreeYn("Y")
+                .email("kbh@gamil.com").build();
+        final MemberRequest memberRequest2 = MemberRequest.builder()
+                .hp("+8201055524456").name("이름2").agreeYn("Y")
+                .email("kbh@gamil.com").build();
+
+        멤버를_저장한다(memberRequest1);
+        멤버를_저장한다(memberRequest2);
+
+        mockMvc.perform(get("/api/v1/collection/members")
+                .queryParam("page", "1")
+                .queryParam("pageSize", "10"))
+                .andExpect(status().isOk())
+                .andDo(print());
     }
 
     private MemberResponse 멤버를_조회한다(String location) throws Exception {

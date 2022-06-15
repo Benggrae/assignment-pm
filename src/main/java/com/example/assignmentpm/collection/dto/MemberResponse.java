@@ -26,9 +26,5 @@ public class MemberResponse {
                 .build();
     }
 
-    @Data
-    @AllArgsConstructor
-    public static class Error {
-        private String message;
-    }
+
 }

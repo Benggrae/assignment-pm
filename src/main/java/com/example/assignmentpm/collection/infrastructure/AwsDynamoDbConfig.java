@@ -46,15 +46,27 @@ public class AwsDynamoDbConfig {
                 .build();
     }
 
+    @Profile("test")
+    @Bean(name = "amazonDynamoDB")
+    public AmazonDynamoDB embeddedAmazonDynamoDB() {
+        return AmazonDynamoDBClientBuilder.standard()
+                .withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials("local", "local")))
+                .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration("http://localhost:8000", Regions.AP_NORTHEAST_2.getName()))
+                .build();
+    }
+
     @Primary
     @Profile("!prod")
     @Bean(name = "amazonDynamoDB")
-    public AmazonDynamoDB embeddedAmazonDynamoDB() {
+    public AmazonDynamoDB containerAmazonDynamoDB() {
         return AmazonDynamoDBClientBuilder.standard()
                 .withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials("test", "test")))
                 .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(dynamoEndPoint,
                         Regions.AP_NORTHEAST_2.getName()))
                 .build();
     }
+
+
+
 
 }
