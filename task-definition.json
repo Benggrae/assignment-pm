@@ -1,32 +1,21 @@
 {
+  "family": "task-ecs",
   "containerDefinitions": [
     {
+      "cpu": 256,
+      "image": "327927570188.dkr.ecr.ap-northeast-2.amazonaws.com/assignment-pm:f9ca108206bb06637643853b8864142ab9e894f3",
+      "memory": 512,
+      "name": "assignment-pm",
+      "essential" : true,
       "portMappings": [
         {
-          "hostPort": 8080,
+          "hostPort": "8080",
           "protocol": "tcp",
-          "containerPort": 8080
+          "containerPort": "8080"
         }
-      ],
-      "image": "327927570188.dkr.ecr.ap-northeast-2.amazonaws.com/assignment-pm",
-      "name": "assignment-pm"
+      ]
     }
   ],
-  "memory": "512",
-  "compatibilities": [
-    "EXTERNAL",
-    "EC2"
-  ],
-  "family": "task-ecs",
-  "requiresAttributes": [
-    {
-      "name": "com.amazonaws.ecs.capability.ecr-auth"
-    }
-  ],
-  "requiresCompatibilities": [
-    "EC2"
-  ],
-  "cpu": "256",
-  "status": "ACTIVE",
-  "volumes": []
+  "memory": "2048",
+  "cpu": "512"
 }
