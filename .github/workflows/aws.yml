@@ -39,8 +39,8 @@ env:
   CONTAINER_NAME: "assignment-pm"           # set this to the name of the container in the
                                                # containerDefinitions section of your task definition
 
-permissions:
-  contents: read
+#permissions:
+#  contents: read
 
 jobs:
   deploy:
