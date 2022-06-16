@@ -157,7 +157,7 @@
 
 
 ### 3.4 프로그램 환경
-> 로컬에서도 실 AWS 서비스를 생성안하고 개발하겠끔 개발환경을 구성하였습니다.
+> 로컬에서도 실 AWS 서비스를 생성하지 않고 개발할 수 있도록 환경을 구성하였습니다
   - 개발(로컬) : localStack (도커 이미지 - DynamoDB), 임베디드 Redis 
   - 테스트 : 임베디드 Dynamo, 임베디드 Redis
   - 로컬 QA : localStack (도커이미지 - DynamDB, Redis)

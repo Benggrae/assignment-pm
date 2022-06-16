@@ -4,7 +4,7 @@
     {
       "cpu": 256,
       "image": "327927570188.dkr.ecr.ap-northeast-2.amazonaws.com/assignment-pm:latest",
-      "memory": 400,
+      "memory": 300,
       "name": "assignment-pm",
       "essential" : true,
       "portMappings": [
@@ -16,6 +16,6 @@
       ]
     }
   ],
-  "memory": "850",
-  "cpu": "512"
+  "memory": "400",
+  "cpu": "256"
 }
