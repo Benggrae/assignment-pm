@@ -149,6 +149,9 @@
     2. ECR 이미지 푸쉬
     3. ECS 배포로 작업 정의로 작업 생성
     4. ECS -> EC2 배포 
+
+ ![image](https://user-images.githubusercontent.com/26699273/174077714-3a922cac-1dfa-42c9-9f19-e0b504325d00.png)
+
     
 ### 3.3 개발 언어 및 프레임 워크
   * JAVA (11)
