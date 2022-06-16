@@ -146,10 +146,10 @@
 ### 3.2 CI / CD
   1. Github(Master Branch Push)
   2. Gihub Action 
-    1. 배포할 이미지 생성
-    2. ECR 이미지 푸쉬
-    3. ECS 배포로 작업 정의로 작업 생성
-    4. ECS -> EC2 배포 
+   1. 배포할 이미지 생성
+   2. ECR 이미지 푸쉬
+   3. ECS 배포로 작업 정의로 작업 생성
+   4. ECS -> EC2 배포 
 
  ![image](https://user-images.githubusercontent.com/26699273/174077714-3a922cac-1dfa-42c9-9f19-e0b504325d00.png)
 
