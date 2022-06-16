@@ -90,46 +90,46 @@
 
 ### 오늘 수집한 정보 조회
  * API 명세서
-  - Method : GET
-  - URI : http://elb-ecs-832940157.ap-northeast-2.elb.amazonaws.com/api/v1/collection/members/today
-  - Params
-      - |필드명|내용|예시|제약조건||
-        |------|---|---|---|------|
-        |memberId  |유저ID     |kbh0055@naver.com|공백이 올 수 없음|
+   - Method : GET
+   - URI : http://elb-ecs-832940157.ap-northeast-2.elb.amazonaws.com/api/v1/collection/members/today
+   - Params
+       - |필드명|내용|예시|제약조건||
+         |------|---|---|---|------|
+         |memberId  |유저ID     |kbh0055@naver.com|공백이 올 수 없음|
 
-  - Response
-      - 성공시 200 코드 반환
-      - 유저 정보들을 반환
-      - 실패시 body 값에 error message 반환
+   - Response
+       - 성공시 200 코드 반환
+       - 유저 정보들을 반환
+       - 실패시 body 값에 error message 반환
 
- * 예시
-   ```http request
-      GET http://elb-ecs-832940157.ap-northeast-2.elb.amazonaws.com/api/v1/collection/members/today
-   ```
+   * 예시
+    ```http request
+       GET http://elb-ecs-832940157.ap-northeast-2.elb.amazonaws.com/api/v1/collection/members/today
+    ```
 
-   * 성공
-   ```json
-   [{
-     "id": "4a643867-6c5f-47ec-82f5-4e86e9796b62",
-     "name": "kim",
-     "email": "kbh0551@naver.com",
-     "hp": "+82010525250440"
-     },
-     {
-     "id": "f00ecbe3-cc88-450e-9fb8-eb2aee44f0b4",
-     "name": "kim",
-     "email": "kbh055@naver.com",
-     "hp": "+82010525550440"
-     }
-   ]
-   ```
+    * 성공
+    ```json
+    [{
+      "id": "4a643867-6c5f-47ec-82f5-4e86e9796b62",
+      "name": "kim",
+      "email": "kbh0551@naver.com",
+      "hp": "+82010525250440"
+      },
+      {
+      "id": "f00ecbe3-cc88-450e-9fb8-eb2aee44f0b4",
+      "name": "kim",
+      "email": "kbh055@naver.com",
+      "hp": "+82010525550440"
+      }
+    ]
+    ```
 
-   * 실패
-   ```json
-   {
-     message:"오류입니다."
-   }
-   ```
+    * 실패
+    ```json
+    {
+      message:"오류입니다."
+    }
+    ```
 
 ## 3. Article 
  <img width="1392" alt="image" src="https://user-images.githubusercontent.com/26699273/174006756-c4f3194f-312e-4c39-8f86-c4b1fc8dbde3.png">
