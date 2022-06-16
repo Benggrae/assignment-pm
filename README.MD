@@ -59,8 +59,8 @@
     - Method : GET
     - URI : http://elb-ecs-832940157.ap-northeast-2.elb.amazonaws.com/api/v1/collection/members/{memberId}
     - Params
-        - |필드명|내용|예시|제약조건||
-           |------|---|---|---|------|
+        - |필드명|내용|예시|제약조건|
+           |------|---|---|---|
            |memberId  |유저ID |kbh0055@naver.com|공백이 올 수 없음|
       
     - Response
@@ -93,10 +93,7 @@
  * API 명세서
    - Method : GET
    - URI : http://elb-ecs-832940157.ap-northeast-2.elb.amazonaws.com/api/v1/collection/members/today
-   - Params
-       - |필드명|내용|예시|제약조건||
-         |------|---|---|---|------|
-         |memberId  |유저ID     |kbh0055@naver.com|공백이 올 수 없음|
+
 
    - Response
        - 성공시 200 코드 반환
