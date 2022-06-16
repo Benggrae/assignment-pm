@@ -34,7 +34,7 @@ on:
 env:
   AWS_REGION: "ap-northeast-2"                   # set this to your preferred AWS region, e.g. us-west-1
   ECR_REPOSITORY: "assignment-pm"           # set this to your Amazon ECR repository name
-  ECS_SERVICE: "task-service"               # set this to your Amazon ECS service name
+  ECS_SERVICE: "ecs-service"               # set this to your Amazon ECS service name
   ECS_CLUSTER: "cluster-pm"                 # set this to your Amazon ECS cluster name                                             # file, e.g. .aws/task-definition.json
   CONTAINER_NAME: "assignment-pm"           # set this to the name of the container in the
                                                # containerDefinitions section of your task definition
