@@ -29,7 +29,7 @@ public class MemberRequest {
     }
 
     public Optional<Member> toMember() {
-        if ("N".equals(agreeYn)) {
+        if (!"Y".equals(agreeYn)) {
             return Optional.empty();
         }
         return Optional.of(Member.builder()

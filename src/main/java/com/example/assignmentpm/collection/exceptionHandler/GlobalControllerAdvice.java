@@ -30,7 +30,7 @@ public class GlobalControllerAdvice {
     }
 
     @ExceptionHandler(DuplicateKeyException.class)
-    public ResponseEntity<ErrorResponse> duplicate(MethodArgumentNotValidException e) {
+    public ResponseEntity<ErrorResponse> duplicate(DuplicateKeyException e) {
         return ResponseEntity.status(HttpStatus.ALREADY_REPORTED)
                 .body(ErrorResponse.of(e.getMessage()));
     }
