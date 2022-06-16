@@ -1,12 +1,13 @@
 package com.example.assignmentpm.collection.ui;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.hasSize;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 
 import com.example.assignmentpm.collection.dto.MemberRequest;
 import com.example.assignmentpm.collection.dto.MemberResponse;
@@ -19,11 +20,14 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
 class MemberControllerTest {
 
     @Autowired
@@ -73,12 +77,12 @@ class MemberControllerTest {
         final MvcResult result = 멤버를_저장한다(memberRequest);
 
         assertAll(
-                () -> assertThat(result.getResponse().getStatus()).isEqualTo(HttpStatus.NO_CONTENT.value())
+                () -> assertThat(result.getResponse().getStatus()).isEqualTo(HttpStatus.BAD_REQUEST.value())
         );
     }
 
     @Test
-    @DisplayName("멤버들을 조회한다.")
+    @DisplayName("오늘 저장된 멤버들을 조회한다.")
     void getMembers() throws Exception{
         final MemberRequest memberRequest1 = MemberRequest.builder()
                 .hp("+8201055523456").name("이름").agreeYn("Y")
@@ -90,10 +94,9 @@ class MemberControllerTest {
         멤버를_저장한다(memberRequest1);
         멤버를_저장한다(memberRequest2);
 
-        mockMvc.perform(get("/api/v1/collection/members")
-                .queryParam("page", "1")
-                .queryParam("pageSize", "10"))
+        mockMvc.perform(get("/api/v1/collection/members/today"))
                 .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(2)))
                 .andDo(print());
     }
 

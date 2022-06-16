@@ -15,12 +15,12 @@ public class MemberSearchService {
 
     private final MemberRepository memberRepository;
 
-    @Cacheable(cacheNames = "member", key = "#member.email")
+    @Cacheable(cacheNames = "member",unless="#result == null", key = "#member.email", cacheManager = "cacheManager")
     public Optional<Member> hasEmailAndHp(Member member) {
         return memberRepository.findByEmailAndHp(member.getEmail(), member.getHp());
     }
 
-    @Cacheable(cacheNames = "findMember", key = "#memberId")
+    @Cacheable(cacheNames = "findMember",unless="#result == null", key = "#memberId", cacheManager = "cacheManager")
     public MemberResponse findMember(String memberId) {
         return MemberResponse.buildResponse(memberRepository.findById(memberId)
                 .orElseThrow(() -> new NoSuchElementException("데이터가 존재하지 않습니다.")));

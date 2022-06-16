@@ -9,10 +9,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 
+
 @Configuration
 @RequiredArgsConstructor
 @Slf4j
-//@ConditionalOnProperty(name = "embedded-dynamodb.use", havingValue = "true")
 public class EmbeddedDynamoDbConfig {
 
     private DynamoDBProxyServer proxyServer;

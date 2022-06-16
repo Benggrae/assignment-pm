@@ -46,6 +46,7 @@ public class AwsDynamoDbConfig {
                 .build();
     }
 
+    @Primary
     @Profile("test")
     @Bean(name = "amazonDynamoDB")
     public AmazonDynamoDB embeddedAmazonDynamoDB() {
@@ -54,6 +55,7 @@ public class AwsDynamoDbConfig {
                 .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration("http://localhost:8000", Regions.AP_NORTHEAST_2.getName()))
                 .build();
     }
+
 
     @Primary
     @Profile("!prod")

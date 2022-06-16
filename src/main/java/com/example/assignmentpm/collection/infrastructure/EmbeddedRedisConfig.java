@@ -2,14 +2,17 @@ package com.example.assignmentpm.collection.infrastructure;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import redis.embedded.RedisServer;
 
 @Profile({"local","test"})
+@Slf4j
 @Configuration
 public class EmbeddedRedisConfig {
+
 
     @Value("${spring.redis.port}")
     private int redisPort;
@@ -22,7 +25,11 @@ public class EmbeddedRedisConfig {
                 .setting("maxmemory 256M")
                 .build();
 
-        redisServer.start();
+        try {
+            redisServer.start();
+        } catch(Exception e) {
+            log.warn(e.getMessage());
+        }
     }
 
     @PreDestroy
