@@ -5,13 +5,14 @@ import com.example.assignmentpm.collection.dto.MemberRequest;
 import com.example.assignmentpm.collection.infrastructure.dynamoRepository.MemberRepository;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class MemberService {
 
-    private static final IllegalArgumentException IS_PROCESS_EXCEPTION = new IllegalArgumentException("이미 참여하였습니다.");
+    private static final DuplicateKeyException IS_PROCESS_EXCEPTION = new DuplicateKeyException("이미 참여하였습니다.");
     private final MemberRepository memberRepository;
 
     private final MemberSearchService memberSearchService;

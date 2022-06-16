@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.apache.http.HttpRequest;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,7 +35,7 @@ public class MemberController {
     private final Date NOW_DATE = Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
 
     @PostMapping("member")
-    public ResponseEntity<Void> member(@Valid @RequestBody MemberRequest memberRequest, HttpRequest httpRequest) {
+    public ResponseEntity<Void> member(@Valid @RequestBody MemberRequest memberRequest) {
 
         String memberId = memberService.saveMember(memberRequest);
         if (memberId == null) {

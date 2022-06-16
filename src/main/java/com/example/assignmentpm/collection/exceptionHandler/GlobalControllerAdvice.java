@@ -3,6 +3,8 @@ package com.example.assignmentpm.collection.exceptionHandler;
 import com.example.assignmentpm.collection.dto.ErrorResponse;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.DuplicateKeyException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -27,10 +29,16 @@ public class GlobalControllerAdvice {
                         .collect(Collectors.joining())));
     }
 
-//    @ExceptionHandler(Exception.class)
-//    public ResponseEntity<ErrorResponse> serverError(Exception e) {
-//        log.error(e.getMessage());
-//        return ResponseEntity.internalServerError()
-//                .body(ErrorResponse.of(e.getClass().toString()));
-//    }
+    @ExceptionHandler(DuplicateKeyException.class)
+    public ResponseEntity<ErrorResponse> duplicate(MethodArgumentNotValidException e) {
+        return ResponseEntity.status(HttpStatus.ALREADY_REPORTED)
+                .body(ErrorResponse.of(e.getMessage()));
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorResponse> serverError(Exception e) {
+        log.error(e.getMessage());
+        return ResponseEntity.internalServerError()
+                .body(ErrorResponse.of(e.getClass().toString()));
+    }
 }

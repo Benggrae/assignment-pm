@@ -2,9 +2,9 @@
   "family": "task-ecs",
   "containerDefinitions": [
     {
-      "cpu": 512,
+      "cpu": 256,
       "image": "327927570188.dkr.ecr.ap-northeast-2.amazonaws.com/assignment-pm:latest",
-      "memory": 1024,
+      "memory": 512,
       "name": "assignment-pm",
       "essential" : true,
       "portMappings": [

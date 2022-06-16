@@ -14,7 +14,7 @@
 - 오늘 수집한 정보 조회
 
 ## 3. Article 
-* <img width="1392" alt="image" src="https://user-images.githubusercontent.com/26699273/174006756-c4f3194f-312e-4c39-8f86-c4b1fc8dbde3.png">. 
+ <img width="1392" alt="image" src="https://user-images.githubusercontent.com/26699273/174006756-c4f3194f-312e-4c39-8f86-c4b1fc8dbde3.png">
 
 ### 3.1 AWS 서비스 목록
   * ECS 클러스터  
