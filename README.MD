@@ -13,7 +13,8 @@
   * API 명세서  
     - Method : POST 
     - URI : http://elb-ecs-832940157.ap-northeast-2.elb.amazonaws.com/collection/member
-    - Params
+    - Content-Type: application/json
+    - Request Body 
        - |필드명|내용|예시|제약조건|
           |------|---|---|---|
           |email  |이메일주소     |kbh0055@naver.com|공백이 올 수 없음|
