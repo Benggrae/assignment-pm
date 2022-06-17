@@ -12,7 +12,7 @@
 ### 개인 정보 수집 
   * API 명세서  
     - Method : POST 
-    - URI : http://elb-ecs-832940157.ap-northeast-2.elb.amazonaws.com/collection/member
+    - URI : http://elb-ecs-832940157.ap-northeast-2.elb.amazonaws.com/api/v1/collection/member
     - Content-Type: application/json
     - Request Body 
        - |필드명|내용|예시|제약조건|
