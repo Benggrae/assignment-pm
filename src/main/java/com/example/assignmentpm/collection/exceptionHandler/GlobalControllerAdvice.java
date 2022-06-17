@@ -1,11 +1,13 @@
 package com.example.assignmentpm.collection.exceptionHandler;
 
 import com.example.assignmentpm.collection.dto.ErrorResponse;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -33,6 +35,11 @@ public class GlobalControllerAdvice {
     public ResponseEntity<ErrorResponse> duplicate(DuplicateKeyException e) {
         return ResponseEntity.status(HttpStatus.ALREADY_REPORTED)
                 .body(ErrorResponse.of(e.getMessage()));
+    }
+
+    @ExceptionHandler({HttpRequestMethodNotSupportedException.class, NoSuchElementException.class})
+    public ResponseEntity<Void> notFound() {
+        return ResponseEntity.notFound().build();
     }
 
     @ExceptionHandler(Exception.class)
