@@ -26,6 +26,9 @@ dependencies {
     implementation 'io.github.boostchicken:spring-data-dynamodb:5.2.5'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation 'it.ozimov:embedded-redis:0.7.2'
+    implementation 'org.springframework.retry:spring-retry'
+    implementation 'org.springframework:spring-aspects'
+
 
 
     compileOnly 'org.projectlombok:lombok'
