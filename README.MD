@@ -28,7 +28,7 @@
       
     * 예시
     ```http request
-       POST http://elb-ecs-832940157.ap-northeast-2.elb.amazonaws.com/api/v1/collection/member
+       POST /api/v1/collection/member
        
        Content-Type: application/json
     
