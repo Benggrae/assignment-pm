@@ -12,7 +12,7 @@
 ### 개인 정보 수집 
   * API 명세서  
     - Method : POST 
-    - URI : http://elb-ecs-832940157.ap-northeast-2.elb.amazonaws.com/api/v1/collection/member
+    - URI : /api/v1/collection/member
     - Content-Type: application/json
     - Request Body 
        - |필드명|내용|예시|제약조건|
@@ -57,7 +57,7 @@
 ### 개인 정보 조회
   * API 명세서
     - Method : GET
-    - URI : http://elb-ecs-832940157.ap-northeast-2.elb.amazonaws.com/api/v1/collection/members/{memberId}
+    - URI : /api/v1/collection/members/{memberId}
     - Params
         - |필드명|내용|예시|제약조건|
            |------|---|---|---|
@@ -69,7 +69,7 @@
 
     * 예시
     ```http request
-       GET http://elb-ecs-832940157.ap-northeast-2.elb.amazonaws.com/api/v1/collection/members/4a643867-6c5f-47ec-82f5-4e86e9796b62
+       GET /api/v1/collection/members/4a643867-6c5f-47ec-82f5-4e86e9796b62
     ```
 
     * 성공
@@ -92,7 +92,7 @@
 ### 오늘 수집한 정보 조회
  * API 명세서
    - Method : GET
-   - URI : http://elb-ecs-832940157.ap-northeast-2.elb.amazonaws.com/api/v1/collection/members/today
+   - URI : /api/v1/collection/members/today
 
 
    - Response
@@ -102,7 +102,7 @@
 
    * 예시
     ```http request
-       GET http://elb-ecs-832940157.ap-northeast-2.elb.amazonaws.com/api/v1/collection/members/today
+       GET /api/v1/collection/members/today
     ```
 
     * 성공
